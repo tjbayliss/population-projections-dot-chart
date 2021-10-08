@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg width="100%" height="100%" viewBox="0 0 2298 634" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
-    <g transform="matrix(1,0,0,1,0,-1196)">
-        <g id="ABLEVIEW" transform="matrix(0.516637,0,0,1,0,1196)">
+<svg width="100%" height="100%" viewBox="0 0 612 634" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(1,0,0,1,0,-2392)">
+        <g id="LOGO" transform="matrix(0.13759,0,0,1,0,2392)">
             <rect x="0" y="0" width="4448" height="634" style="fill:none;"/>
             <clipPath id="_clip1">
                 <rect x="0" y="0" width="4448" height="634"/>
             </clipPath>
             <g clip-path="url(#_clip1)">
-                <g id="ABLEVIEW1" serif:id="ABLEVIEW" transform="matrix(1.9356,0,0,1,-25309.5,-3401.57)">
-                    <g transform="matrix(4.16667,0,0,4.16667,13715.4,3828.5)">
-                        <text x="0px" y="0px" style="font-family:'OpenSans-Regular', 'Open Sans', sans-serif;font-size:72px;fill:rgb(19,157,210);">ABLEVIEW</text>
-                    </g>
+                <g id="LOGO1" serif:id="LOGO" transform="matrix(7.26797,0,0,1,-95034.6,-3401.57)">
                     <g transform="matrix(117.564,-203.627,195.338,122.553,13095.9,3677.76)">
                         <g>
                             <clipPath id="_clip2">
