@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+
+<!-- DOT CHART -->
+
+<!--
+    USEFUL LINKS: 
+    https://developer.snapappointments.com/bootstrap-select/
+    https://stackoverflow.com/questions/1085801/get-selected-value-in-dropdown-list-using-javascript
+    https://stackoverflow.com/questions/27487937/selectpicker-with-select-all-by-default
+    https://developer.snapappointments.com/bootstrap-select/methods/
+    https://stackoverflow.com/questions/49801575/select-default-option-bootstrap-4
+    https://stackoverflow.com/questions/28349539/deselectall-doesnt-work-for-bootstrap-select
+    https://stackoverflow.com/questions/39973554/bootstrap-select-select-deselect-all-option-click-cant-firing-event
+
+    SVG range slider
+    https://codepen.io/osublake/pen/jbRaMY/
+-->
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+  <link rel="icon" href="https://alephinsights.com/wp-content/uploads/2019/05/favicon.icon" sizes="32x32" />
+  <link rel="icon" href="https://alephinsights.com/wp-content/uploads/2019/05/favicon.icon" sizes="192x192" />
+  <link rel="apple-touch-icon" href="https://alephinsights.com/wp-content/uploads/2019/05/favicon.icon" />
+
+  <title>Population Projection Dot Plot</title>
+
+  <link rel="stylesheet" href="css/jquery-ui.css" />
+  <link rel="stylesheet" href="css/github.min.css" />
+  <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/font-awesome.min.css" />
+  <link rel="stylesheet" href="css/aleph-global-colour-palettes.css" />
+  <link rel="stylesheet" href="css/bootstrap-select.min.css" />
+  <link rel="stylesheet" href="css/bootstrap-toggle.min.css" />
+  <link rel="stylesheet" href="css/aleph-futureForces-style.css" />
+  <link rel="stylesheet" href="css/dstl-global-colour-palettes.css" />
+</head>
+
+<body onload="onload()">
+  <div class="container-fluid">
+    <div class="row aleph-header-row">
+      <div class="col">
+        <div class="aleph-header">
+          <a class="nav-link" href="https://www.ableview.co.uk" target="_blank"><img class="logo"
+              src="image/ableview.svg"></a>
+
+          <h2 class="aleph-header-title">
+            Population Projection Dot Plot
+          </h2>
+        </div>
+      </div>
+    </div>
+    <!-- END aleph-header-row -->
+
+    <div class="row aleph-visual-row">
+      <div class="col">
+        <div class="aleph-container">
+          <div class="div-container line-chart aleph-hide">
+            <!-- SELECTOR ROW -->
+
+            <div class="row aleph-selector-row aleph-line-selector-row" id="aleph-line-selector-row">
+              <div class="
+                    col-sm-3 col-md-1
+                    aleph-selector-col
+                    aleph-line-selector-col
+                    aleph-line-selector-col-0
+                  "></div>
+              <div class="
+                    col-sm-3 col-md-1
+                    aleph-selector-col
+                    aleph-line-selector-col
+                    aleph-line-selector-col-1
+                  "></div>
+              <div class="
+                    col-sm-3 col-md-1
+                    aleph-selector-col
+                    aleph-line-selector-col
+                    aleph-line-selector-col-2
+                  "></div>
+              <div class="
+                    col-sm-3 col-md-1
+                    aleph-selector-col
+                    aleph-line-selector-col
+                    aleph-line-selector-col-3
+                  "></div>
+              <div class="
+                    col-sm-3 col-md-1
+                    aleph-selector-col
+                    aleph-line-selector-col
+                    aleph-line-selector-col-4
+                  "></div>
+              <div class="
+                    col-sm-3 col-md-1
+                    aleph-selector-col
+                    aleph-line-selector-col
+                    aleph-line-selector-col-5
+                  "></div>
+              <div class="
+                    col-sm-3 col-md-1
+                    aleph-selector-col
+                    aleph-line-selector-col
+                    aleph-line-selector-col-6
+                  "></div>
+              <div class="
+                    col-sm-3 col-md-1
+                    aleph-selector-col
+                    aleph-line-selector-col
+                    aleph-line-selector-col-7
+                  "></div>
+              <div class="
+                    col-sm-3 col-md-1
+                    aleph-selector-col
+                    aleph-line-selector-col
+                    aleph-line-selector-col-8
+                  ">
+                <label class="checkbox-inline checkbox-inline-toggleAll">
+                  <input type="checkbox" class="aleph-SelectdeSelectAll" id="SelectdeSelectAll" data-off="Select All"
+                    data-on="De-select All" checked data-toggle="toggle" />
+                </label>
+              </div>
+              <div class="
+                    col-sm-3 col-md-1
+                    aleph-selector-col
+                    aleph-line-selector-col
+                    aleph-line-selector-col-9
+                  ">
+                <input class="btn btn-primary aleph-submit aleph-line-clear" type="submit" id="line-clear"
+                  value="Clear Chart" disabled onclick="clearChart(this)" />
+              </div>
+              <div class="
+                    col-sm-3 col-md-1
+                    aleph-selector-col
+                    aleph-line-selector-col
+                    aleph-line-selector-col-10
+                  ">
+                <input class="btn btn-primary aleph-submit aleph-line-submit" type="submit" id="line-submit"
+                  value="Submit" onclick="submitLineSelection(this)" />
+              </div>
+              <div class="
+                    col-sm-3 col-md-1
+                    aleph-selector-col
+                    aleph-line-selector-col
+                    aleph-line-selector-col-11
+                  "></div>
+            </div>
+
+            <!-- LINE CHART WARNING ROW -->
+            <!-- https://www.w3schools.com/bootstrap/bootstrap_alerts.asp -->
+            <div class="row aleph-warning-row aleph-line-warning-row" id="aleph-line-warning-row">
+              <div class="col col-sm-2"></div>
+              <div class="
+                    col col-sm-8
+                    alert alert-danger alert-dismissible
+                    lineChart
+                    duplicateSelection
+                    aleph-hide
+                  " style="height: 50px; background-color: none">
+                <label class="aleph-alert-line-duplicateSelection"><strong>Warning!</strong> Warning Message.</label>
+                <button type="button" id="ok" class="btn btn-dark aleph-line-confirmation ok"
+                  onclick="handleLineChartDuplicateWarning(this)">
+                  OK
+                </button>
+              </div>
+
+              <div class="
+                    col col-sm-8
+                    alert alert-danger alert-dismissible
+                    lineChart
+                    incompleteSelections
+                    aleph-hide
+                  " style="height: 50px; background-color: none">
+                <label class="aleph-alert-line-incompleteSelections"><strong>Warning!</strong> Warning Message.</label>
+              </div>
+              <div class="
+                    col col-sm-8
+                    alert alert-danger alert-dismissible
+                    lineChart
+                    lineDeletion
+                    aleph-hide
+                  " style="height: 50px; background-color: none">
+                <label class="aleph-alert-line-lineDeletion"><strong>Warning!</strong> Warning Message.</label>
+                <button type="button" id="ok" class="btn btn-dark aleph-line-confirmation ok"
+                  onclick="handleLineChartLineDeletionWarning(this)">
+                  OK
+                </button>
+                <button type="button" id="cancel" class="btn btn-dark aleph-line-confirmation cancel"
+                  onclick="handleLineChartLineDeletionWarning(this)">
+                  Cancel
+                </button>
+              </div>
+
+              <div class="
+                    col col-sm-8
+                    alert alert-danger alert-dismissible
+                    lineChart
+                    clearChart
+                    aleph-hide
+                  " style="height: 50px; background-color: none">
+                <label class="aleph-alert-line-clearChart"><strong>Warning!</strong> Warning Message.</label>
+                <button type="button" id="ok" class="btn btn-dark aleph-line-confirmation ok"
+                  onclick="handleLineChartClearWarning(this)">
+                  OK
+                </button>
+                <button type="button" id="cancel" class="btn btn-dark aleph-line-confirmation cancel"
+                  onclick="handleLineChartClearWarning(this)">
+                  Cancel
+                </button>
+              </div>
+
+              <div class="
+                    col col-sm-8
+                    alert alert-danger alert-dismissible
+                    lineChart
+                    lineLimitReached
+                    aleph-hide
+                  " style="height: 50px; background-color: none">
+                <label class="aleph-alert-line-lineLimitReached"><strong>Warning!</strong> Warning Message.</label>
+                <button type="button" id="ok" class="btn btn-dark aleph-line-confirmation ok"
+                  onclick="handleLineChartLimitWarning(this)">
+                  OK
+                </button>
+              </div>
+
+              <div class="col col-sm-2"></div>
+            </div>
+
+            <!-- CHART ROW -->
+            <div class="aleph-chart-container aleph-line-chart-container">
+              <div class="line-chart-slider-range-container">
+                <div id="vertical-line-slider-range">
+                  <label class="
+                        slider-label
+                        vertical-slider-label
+                        slider-label-fixed-top
+                      ">
+                  </label>
+                  <label class="
+                        slider-label
+                        vertical-slider-label
+                        slider-label-movable-top
+                      ">
+                  </label>
+                  <label class="
+                        slider-label
+                        vertical-slider-label
+                        slider-label-movable-bottom
+                      ">
+                  </label>
+                  <label class="
+                        slider-label
+                        vertical-slider-label
+                        slider-label-fixed-bottom
+                      ">
+                  </label>
+                </div>
+              </div>
+
+              <div class="line-chart-horizontal-slider-range-container">
+                <div id="horizontal-line-slider-range">
+                  <label class="slider-label slider-label-fixed-left">
+                  </label>
+                  <label class="
+                        slider-label
+                        horizontal-slider-label
+                        slider-label-movable-left
+                      ">
+                  </label>
+                  <label class="
+                        slider-label
+                        horizontal-slider-label
+                        slider-label-movable-right
+                      ">
+                  </label>
+                  <label class="slider-label slider-label-fixed-right">
+                  </label>
+                </div>
+              </div>
+              <svg class="aleph-chart aleph-line-chart" id="aleph-line-chart"></svg>
+            </div>
+          </div>
+
+          <!-- END div-container line-chart -->
+
+          <div class="div-container pyramid-chart aleph-hide">
+            <div class="aleph-form aleph-pyramid-form">
+              <div class="aleph-fieldset aleph-pyramid-fieldset">
+                <div class="aleph-pyramid-chart-buttons">
+                  <label class="checkbox-inline checkbox-inline-playStop">
+                    <input type="checkbox" class="aleph-playStop" id="pyramid-playStop" data-off="Play" data-on="Stop"
+                      data-toggle="toggle" />
+                  </label>
+
+                  <label class="checkbox-inline checkbox-inline-freezeOutlines">
+                    <input type="checkbox" class="aleph-freezeOutlines" id="freezeOutlines" data-off="Lock Outlines"
+                      data-on="Unlock Outlines" data-toggle="toggle" />
+                  </label>
+
+                  <label class="checkbox-inline checkbox-inline-countsPercents">
+                    <input type="checkbox" class="aleph-countsPercents" id="countsPercents" data-off="Display Counts"
+                      data-on="Display Percentages" data-toggle="toggle" />
+                  </label>
+                </div>
+                <div id="pyramid-slider">
+                  <!-- <label class="aleph-slider-year-label selected-year aleph-hide">Selected Year</label>
+                  <label class="aleph-slider-year-label locked-year aleph-hide">Locked Year</label>-->
+                </div>
+              </div>
+
+              <div class="row aleph-selector-row aleph-pyramid-selector-row">
+                <div class="aleph-pyramid-selector-container">
+                  <div class="aleph-pyramid-lists-container-left"></div>
+                  <div class="aleph-pyramid-lists-container-right"></div>
+
+
+                  <div class="
+                        aleph-pyramid-lists-container-selectionLabelling-left
+                      ">
+                    <div class="subContainer container-left-left">
+                      <label class="ethnicities-selections-left"></label>
+                    </div>
+                    <div class="subContainer container-left-right">
+                      <label class="region-selections-left"></label>
+                    </div>
+                  </div>
+
+                  <div class="
+                        aleph-pyramid-lists-container-selectionLabelling-right
+                      ">
+                    <div class="subContainer container-right-left">
+                      <label class="ethnicities-selections-right"> </label>
+                    </div>
+                    <div class="subContainer container-right-right">
+                      <label class="region-selections-right"> </label>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="row aleph-warning-row aleph-pyramid-warning-row" id="aleph-pyramid-warning-row">
+                <div class="col col-sm-2"></div>
+                <div class="
+                      col col-sm-8
+                      alert alert-danger alert-dismissible
+                      pyramidChart
+                      incompleteSelections
+                      aleph-hide
+                    " style="height: 50px; background-color: none">
+                  <label class="aleph-alert-pyramid-incompleteSelections"><strong>Warning!</strong> Warning
+                    Message.</label>
+                </div>
+              </div>
+            </div>
+            <div class="aleph-chart-container aleph-pyramid-chart-container">
+              <svg class="aleph-chart aleph-pyramid-chart" id="aleph-pyramid-chart"></svg>
+            </div>
+          </div>
+          <!-- END div-container pyramid-chart -->
+
+          <div class="div-container dot-chart aleph-hide">
+            <div class="row aleph-selector-row aleph-dot-selector-row" id="aleph-dot-selector-row">
+              <div class="
+                    col col-md-1
+                    aleph-selector-col aleph-dot-selector-col-0
+                  "></div>
+              <div class="
+                    col col-md-1
+                    aleph-selector-col aleph-dot-selector-col-1
+                  ">
+                <label class="aleph-sortOrderTitle">Sort By:</label>
+              </div>
+              <div class="
+                    col col-md-1
+                    aleph-selector-col aleph-dot-selector-col-2
+                  ">
+              </div>
+              <div class="
+                    col col-md-1
+                    aleph-selector-col aleph-dot-selector-col-3
+                  "></div>
+              <div class="
+                    col col-md-1
+                    aleph-selector-col aleph-dot-selector-col-4
+                  ">
+                <div id="dots-slider"></div>
+              </div>
+            </div>
+            <div class="aleph-chart-container aleph-dot-chart-container">
+              <svg class="aleph-chart aleph-dot-chart" id="aleph-dot-chart"></svg>
+            </div>
+          </div>
+          <!-- END div-container dot-chart -->
+        </div>
+        <!-- END aleph-container -->
+      </div>
+    </div>
+
+    <div class="row aleph-footer-row">
+      <div class="col">
+        <div class="aleph-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end container-fluid -->
+
+  <!-- Bootstrap core JavaScript
+    ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script>
+    window.jQuery ||
+      document.write(
+        '<script type="text/javascript" src="js/jquery-slim.min.js"><\/script>'
+      );
+  </script>
+
+  <!-- general library support files -->
+  <!-- THESE ONES ARE COMMON TO ALL CHART TYPES -->
+  <script type="text/javascript" src="js/jQuery-v3.6.0.js"></script>
+  <script type="text/javascript" src="js/popper.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap-select.min.js"></script>
+  <script type="text/javascript" src="js/bootstrap-toggle.min.js"></script>
+  <script type="text/javascript" src="js/jquery-ui.js"></script>
+  <script type="text/javascript" src="js/d3.v5.min.js"></script>
+
+  <!-- Project-specific JS files -->
+  <!-- THESE ONES ARE COMMON TO ALL CHART TYPES -->
+  <script src="js/aleph-alephConstructObject-script.js"></script>
+  <script src="js/aleph-projectLoadFunctions-script.js"></script>
+  <script src="js/aleph-selectionConfigurations-script.js"></script>
+  <script src="js/aleph-windowResizeFunction-script.js"></script>
+  <script src="js/aleph-genericProjectFunctions-script.js"></script>
+
+  <!-- THESE ONES ARE SPECIFIC TO THE LINE CHART -->
+  <!-- <script src="js/aleph-lineChart-script.js"></script> -->
+
+  <!-- THESE ONES ARE SPECIFIC TO THE PYRAMID CHART -->
+  <!-- <script src="js/aleph-pyramidChart-script.js"></script> -->
+
+  <!-- THESE ONES ARE SPECIFIC TO THE DOT CHART -->
+  <script src="js/aleph-dotChart-script.js"></script>
+</body>
+
+</html>

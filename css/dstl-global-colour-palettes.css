@@ -1,0 +1,22 @@
+/*
+DSTL COLOUR PALETTES - PRIMARY, SECONDARY
+*/
+:root {
+  /* monotone */
+  --white: #ffffff;
+  --black: #000000;
+  --alt-grey:#595F66;
+
+  /* main */
+  --dstl-primary-midnight-purple: #14022E;
+  --dstl-primary-rose-red: #CE2256;
+  --dstl-primary-titanium-grey: #ACAFB2;
+
+  
+  --dstl-primary-royal-purple: #7B67A8;
+  --dstl-primary-sky-blue: #36BCEE;
+  --dstl-primary-aqua-green: #2EB5B2;
+  --dstl-primary-lemon-yellow: #FDDD3E;
+  --dstl-primary-desert-orange: #EF7835;
+  
+} /* end root colour declaration */

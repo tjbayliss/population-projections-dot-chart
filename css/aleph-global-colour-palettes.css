@@ -1,0 +1,46 @@
+/*
+ALEPH COLOUR PALETTES - PRIMARY, SECONDARY and CONTEMPORARY
+*/
+:root {
+  /* monotone */
+  --white: #ffffff;
+  --black: #000000;
+  --red: #F00;
+  --off-black: #14022e;
+
+  /* main */
+  --aleph-primary-red: #be1f24;
+  --aleph-primary-orange-dark: #f15a22;
+  --aleph-primary-orange-light: #f7941e;
+
+  --aleph-secondary-blue: #5f8ac7;
+  --aleph-secondary-purple: #9f86c0;
+  --aleph-secondary-lilac: #e5beed;
+  --aleph-secondary-pink: #fe938c;
+
+  --aleph-secondary-aqua: #a6d8d4;
+  --aleph-secondary-green-dark: #94c9a9;
+  --aleph-secondary-green-light: #c6ecae;
+  --aleph-secondary-yellow: #f4e04d;
+
+  --aleph-secondary-maroon: #885053;
+  --aleph-secondary-grey: #93a3b1;
+
+  /* complementary */
+  --complementary-to-aleph-primary-red: #1fbf49;
+  --complementary-to-aleph-primary-orange-dark: #22f2c9;
+  --complementary-to-aleph-primary-orange-light: #1eb0f7;
+
+  --complementary-to-aleph-secondary-blue: #c7a45f;
+  --complementary-to-aleph-secondary-purple: #bfbe86;
+  --complementary-to-aleph-secondary-lilac: #d8edbe;
+  --complementary-to-aleph-secondary-pink: #8cffbc;
+
+  --complementary-to-aleph-secondary-aqua: #d9b7a7;
+  --complementary-to-aleph-secondary-green-dark: #c99895;
+  --complementary-to-aleph-secondary-green-light: #ebafed;
+  --complementary-to-aleph-secondary-yellow: #6c4ef5;
+
+  --complementary-to-aleph-secondary-maroon: #50875e;
+  --complementary-to-aleph-secondary-grey: #b0a492;
+} /* end root colour declaration */
